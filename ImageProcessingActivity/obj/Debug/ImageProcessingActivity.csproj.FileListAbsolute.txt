@@ -1,0 +1,10 @@
+C:\Users\saylo\OneDrive\Desktop\C#VisualStudio\IntelligentSystems1\ImageProcessingActivity\ImageProcessingActivity\bin\Debug\ImageProcessingActivity.exe.config
+C:\Users\saylo\OneDrive\Desktop\C#VisualStudio\IntelligentSystems1\ImageProcessingActivity\ImageProcessingActivity\bin\Debug\ImageProcessingActivity.exe
+C:\Users\saylo\OneDrive\Desktop\C#VisualStudio\IntelligentSystems1\ImageProcessingActivity\ImageProcessingActivity\bin\Debug\ImageProcessingActivity.pdb
+C:\Users\saylo\OneDrive\Desktop\C#VisualStudio\IntelligentSystems1\ImageProcessingActivity\ImageProcessingActivity\obj\Debug\ImageProcessingActivity.csproj.AssemblyReference.cache
+C:\Users\saylo\OneDrive\Desktop\C#VisualStudio\IntelligentSystems1\ImageProcessingActivity\ImageProcessingActivity\obj\Debug\ImageProcessingActivity.Form1.resources
+C:\Users\saylo\OneDrive\Desktop\C#VisualStudio\IntelligentSystems1\ImageProcessingActivity\ImageProcessingActivity\obj\Debug\ImageProcessingActivity.Properties.Resources.resources
+C:\Users\saylo\OneDrive\Desktop\C#VisualStudio\IntelligentSystems1\ImageProcessingActivity\ImageProcessingActivity\obj\Debug\ImageProcessingActivity.csproj.GenerateResource.cache
+C:\Users\saylo\OneDrive\Desktop\C#VisualStudio\IntelligentSystems1\ImageProcessingActivity\ImageProcessingActivity\obj\Debug\ImageProcessingActivity.csproj.CoreCompileInputs.cache
+C:\Users\saylo\OneDrive\Desktop\C#VisualStudio\IntelligentSystems1\ImageProcessingActivity\ImageProcessingActivity\obj\Debug\ImageProcessingActivity.exe
+C:\Users\saylo\OneDrive\Desktop\C#VisualStudio\IntelligentSystems1\ImageProcessingActivity\ImageProcessingActivity\obj\Debug\ImageProcessingActivity.pdb
