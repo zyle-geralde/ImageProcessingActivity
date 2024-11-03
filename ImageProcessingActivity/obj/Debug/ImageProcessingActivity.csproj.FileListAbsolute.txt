@@ -8,3 +8,10 @@ C:\Users\saylo\OneDrive\Desktop\C#VisualStudio\IntelligentSystems1\ImageProcessi
 C:\Users\saylo\OneDrive\Desktop\C#VisualStudio\IntelligentSystems1\ImageProcessingActivity\ImageProcessingActivity\obj\Debug\ImageProcessingActivity.csproj.CoreCompileInputs.cache
 C:\Users\saylo\OneDrive\Desktop\C#VisualStudio\IntelligentSystems1\ImageProcessingActivity\ImageProcessingActivity\obj\Debug\ImageProcessingActivity.exe
 C:\Users\saylo\OneDrive\Desktop\C#VisualStudio\IntelligentSystems1\ImageProcessingActivity\ImageProcessingActivity\obj\Debug\ImageProcessingActivity.pdb
+C:\Users\saylo\OneDrive\Desktop\C#VisualStudio\IntelligentSystems1\ImageProcessingActivity\ImageProcessingActivity\bin\Debug\AForge.dll
+C:\Users\saylo\OneDrive\Desktop\C#VisualStudio\IntelligentSystems1\ImageProcessingActivity\ImageProcessingActivity\bin\Debug\AForge.Video.DirectShow.dll
+C:\Users\saylo\OneDrive\Desktop\C#VisualStudio\IntelligentSystems1\ImageProcessingActivity\ImageProcessingActivity\bin\Debug\AForge.Video.dll
+C:\Users\saylo\OneDrive\Desktop\C#VisualStudio\IntelligentSystems1\ImageProcessingActivity\ImageProcessingActivity\bin\Debug\AForge.xml
+C:\Users\saylo\OneDrive\Desktop\C#VisualStudio\IntelligentSystems1\ImageProcessingActivity\ImageProcessingActivity\bin\Debug\AForge.Video.xml
+C:\Users\saylo\OneDrive\Desktop\C#VisualStudio\IntelligentSystems1\ImageProcessingActivity\ImageProcessingActivity\bin\Debug\AForge.Video.DirectShow.xml
+C:\Users\saylo\OneDrive\Desktop\C#VisualStudio\IntelligentSystems1\ImageProcessingActivity\ImageProcessingActivity\obj\Debug\ImagePro.29F8D8D4.Up2Date
