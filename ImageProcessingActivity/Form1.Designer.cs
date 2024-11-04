@@ -60,6 +60,10 @@
             this.label1 = new System.Windows.Forms.Label();
             this.button4 = new System.Windows.Forms.Button();
             this.saveFileDialog2 = new System.Windows.Forms.SaveFileDialog();
+            this.basicCopyToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.colorInversionToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.histogramToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.sepiaToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -81,7 +85,7 @@
             this.videoToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1095, 28);
+            this.menuStrip1.Size = new System.Drawing.Size(1289, 28);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -172,7 +176,11 @@
             // videoToolStripMenuItem
             // 
             this.videoToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.greyScaleToolStripMenuItem1});
+            this.greyScaleToolStripMenuItem1,
+            this.basicCopyToolStripMenuItem1,
+            this.colorInversionToolStripMenuItem1,
+            this.histogramToolStripMenuItem1,
+            this.sepiaToolStripMenuItem1});
             this.videoToolStripMenuItem.Name = "videoToolStripMenuItem";
             this.videoToolStripMenuItem.Size = new System.Drawing.Size(60, 24);
             this.videoToolStripMenuItem.Text = "video";
@@ -187,7 +195,7 @@
             // pictureBox1
             // 
             this.pictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.pictureBox1.Location = new System.Drawing.Point(45, 47);
+            this.pictureBox1.Location = new System.Drawing.Point(94, 47);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(407, 394);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -197,7 +205,7 @@
             // pictureBox2
             // 
             this.pictureBox2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.pictureBox2.Location = new System.Drawing.Point(508, 47);
+            this.pictureBox2.Location = new System.Drawing.Point(762, 47);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(426, 394);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -225,7 +233,7 @@
             // pictureBox3
             // 
             this.pictureBox3.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.pictureBox3.Location = new System.Drawing.Point(29, 547);
+            this.pictureBox3.Location = new System.Drawing.Point(45, 547);
             this.pictureBox3.Name = "pictureBox3";
             this.pictureBox3.Size = new System.Drawing.Size(302, 321);
             this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -235,7 +243,7 @@
             // pictureBox4
             // 
             this.pictureBox4.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.pictureBox4.Location = new System.Drawing.Point(369, 547);
+            this.pictureBox4.Location = new System.Drawing.Point(454, 547);
             this.pictureBox4.Name = "pictureBox4";
             this.pictureBox4.Size = new System.Drawing.Size(302, 321);
             this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -245,7 +253,7 @@
             // pictureBox5
             // 
             this.pictureBox5.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.pictureBox5.Location = new System.Drawing.Point(708, 547);
+            this.pictureBox5.Location = new System.Drawing.Point(924, 547);
             this.pictureBox5.Name = "pictureBox5";
             this.pictureBox5.Size = new System.Drawing.Size(302, 321);
             this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -264,7 +272,7 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(454, 885);
+            this.button2.Location = new System.Drawing.Point(524, 885);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(138, 50);
             this.button2.TabIndex = 8;
@@ -274,7 +282,7 @@
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(742, 885);
+            this.button3.Location = new System.Drawing.Point(951, 885);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(100, 50);
             this.button3.TabIndex = 9;
@@ -292,9 +300,9 @@
             // 
             // pictureBox7
             // 
-            this.pictureBox7.Location = new System.Drawing.Point(1016, 671);
+            this.pictureBox7.Location = new System.Drawing.Point(1241, 662);
             this.pictureBox7.Name = "pictureBox7";
-            this.pictureBox7.Size = new System.Drawing.Size(79, 75);
+            this.pictureBox7.Size = new System.Drawing.Size(48, 75);
             this.pictureBox7.TabIndex = 11;
             this.pictureBox7.TabStop = false;
             // 
@@ -320,7 +328,7 @@
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(877, 885);
+            this.button4.Location = new System.Drawing.Point(1110, 885);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(106, 50);
             this.button4.TabIndex = 13;
@@ -332,12 +340,40 @@
             // 
             this.saveFileDialog2.FileOk += new System.ComponentModel.CancelEventHandler(this.saveFileDialog2_FileOk);
             // 
+            // basicCopyToolStripMenuItem1
+            // 
+            this.basicCopyToolStripMenuItem1.Name = "basicCopyToolStripMenuItem1";
+            this.basicCopyToolStripMenuItem1.Size = new System.Drawing.Size(224, 26);
+            this.basicCopyToolStripMenuItem1.Text = "Basic Copy";
+            this.basicCopyToolStripMenuItem1.Click += new System.EventHandler(this.basicCopyToolStripMenuItem1_Click);
+            // 
+            // colorInversionToolStripMenuItem1
+            // 
+            this.colorInversionToolStripMenuItem1.Name = "colorInversionToolStripMenuItem1";
+            this.colorInversionToolStripMenuItem1.Size = new System.Drawing.Size(224, 26);
+            this.colorInversionToolStripMenuItem1.Text = "Color Inversion";
+            this.colorInversionToolStripMenuItem1.Click += new System.EventHandler(this.colorInversionToolStripMenuItem1_Click);
+            // 
+            // histogramToolStripMenuItem1
+            // 
+            this.histogramToolStripMenuItem1.Name = "histogramToolStripMenuItem1";
+            this.histogramToolStripMenuItem1.Size = new System.Drawing.Size(224, 26);
+            this.histogramToolStripMenuItem1.Text = "Histogram";
+            this.histogramToolStripMenuItem1.Click += new System.EventHandler(this.histogramToolStripMenuItem1_Click);
+            // 
+            // sepiaToolStripMenuItem1
+            // 
+            this.sepiaToolStripMenuItem1.Name = "sepiaToolStripMenuItem1";
+            this.sepiaToolStripMenuItem1.Size = new System.Drawing.Size(224, 26);
+            this.sepiaToolStripMenuItem1.Text = "Sepia";
+            this.sepiaToolStripMenuItem1.Click += new System.EventHandler(this.sepiaToolStripMenuItem1_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(1003, 674);
+            this.ClientSize = new System.Drawing.Size(1310, 772);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.pictureBox7);
@@ -404,6 +440,10 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.SaveFileDialog saveFileDialog2;
+        private System.Windows.Forms.ToolStripMenuItem basicCopyToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem colorInversionToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem histogramToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem sepiaToolStripMenuItem1;
     }
 }
 
