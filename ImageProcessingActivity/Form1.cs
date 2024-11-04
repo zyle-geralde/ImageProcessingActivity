@@ -36,6 +36,10 @@ namespace ImageProcessingActivity
 
         private void basicCopyToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            if(pictureBox1.Image == null)
+            {
+                return;
+            }
             processed = new Bitmap(loaded.Width, loaded.Height);
             Color pixel;
             for (int x = 0; x < loaded.Width; x++)
@@ -61,6 +65,10 @@ namespace ImageProcessingActivity
 
         private void greyScaleToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            if (pictureBox1.Image == null)
+            {
+                return;
+            }
             processed = new Bitmap(loaded.Width, loaded.Height);
             Color pixel;
             int ave;
@@ -79,6 +87,10 @@ namespace ImageProcessingActivity
 
         private void colorInversionToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            if (pictureBox1.Image == null)
+            {
+                return;
+            }
             processed = new Bitmap(loaded.Width, loaded.Height);
             Color pixel;
             for (int x = 0; x < loaded.Width; x++)
@@ -96,6 +108,10 @@ namespace ImageProcessingActivity
 
         private void sepiaToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            if (pictureBox1.Image == null)
+            {
+                return;
+            }
             processed = new Bitmap(loaded.Width, loaded.Height);
             Color pixel;
 
@@ -127,6 +143,10 @@ namespace ImageProcessingActivity
 
         private void histogramToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            if (pictureBox1.Image == null)
+            {
+                return;
+            }
             DIPClass.Histogram(ref loaded, ref processed);
             pictureBox2.Image = processed;
         }
@@ -236,6 +256,131 @@ namespace ImageProcessingActivity
         private void sepiaToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             isButtonClicked = 5;
+        }
+
+        private void horizontalFlipToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (pictureBox1.Image == null)
+            {
+                return;
+            }
+            processed = new Bitmap(loaded.Width, loaded.Height);
+            Color pixel;
+            for (int x = 0; x < loaded.Width; x++)
+            {
+                for (int y = 0; y < loaded.Height; y++)
+                {
+                    pixel = loaded.GetPixel(loaded.Width - 1 - x, y);
+
+                    processed.SetPixel(x, y, pixel);
+                }
+            }
+            pictureBox2.Image = processed;
+        }
+
+        private void verticalFlipToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (pictureBox1.Image == null)
+            {
+                return;
+            }
+            processed = new Bitmap(loaded.Width, loaded.Height);
+            Color pixel;
+            for (int x = 0; x < loaded.Width; x++)
+            {
+                for (int y = 0; y < loaded.Height; y++)
+                {
+                    pixel = loaded.GetPixel(x, loaded.Height - 1 - y);
+
+                    processed.SetPixel(x, y, pixel);
+                }
+            }
+            pictureBox2.Image = processed;
+        }
+
+        private void trackBar1_Scroll(object sender, EventArgs e)
+        {
+            if(pictureBox1.Image == null)
+            {
+                return;
+            }
+            processed = new Bitmap(loaded.Width, loaded.Height);
+            for (int x = 0; x < loaded.Width; x++)
+            {
+                for (int y = 0; y < loaded.Height; y++)
+                {
+                    Color temp = loaded.GetPixel(x, y);
+                    Color changed;
+                    if (trackBar1.Value > 0)
+                        changed = Color.FromArgb(Math.Min(temp.R + trackBar1.Value, 255), Math.Min(temp.G + trackBar1.Value, 255), Math.Min(temp.B + trackBar1.Value, 255));
+                    else
+                        changed = Color.FromArgb(Math.Max(temp.R + trackBar1.Value, 0), Math.Max(temp.G + trackBar1.Value, 0), Math.Max(temp.B + trackBar1.Value, 0));
+
+                    processed.SetPixel(x, y, changed);
+                }
+            }
+            pictureBox2.Image = processed;
+        }
+
+        private void trackBar2_Scroll(object sender, EventArgs e)
+        {
+            if(pictureBox1.Image == null)
+            {
+                return;
+            }
+            DIPClass.Equalisation(loaded, ref processed, trackBar2.Value);
+            pictureBox2.Image = processed;
+        }
+
+        private void trackBar3_Scroll(object sender, EventArgs e)
+        {
+            if (pictureBox1.Image == null)
+            {
+                return;
+            }
+            DIPClass.Rotate(loaded, ref processed, trackBar3.Value);
+            pictureBox2.Image = processed;
+        }
+
+        private void scaleToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (pictureBox1.Image == null)
+            {
+                return;
+            }
+            DIPClass.Scale(ref loaded, ref processed, 100, 100);
+            pictureBox2.Image = processed;
+        }
+
+        private void binaryToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (pictureBox1.Image == null)
+            {
+                return;
+            }
+            DIPClass.BinaryThreshold(ref loaded, ref processed, 180);
+            pictureBox2.Image = processed;
+
+        }
+
+        private void verticalFlipToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            isButtonClicked = 6;
+        }
+
+        private void horizontalFlipToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            isButtonClicked = 7;
+        }
+
+        private void scaleToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            isButtonClicked = 8;
+        }
+
+        private void binaryToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            isButtonClicked = 9;
         }
 
         private void FinalFrame_NewFrame(object sender, NewFrameEventArgs e)
@@ -382,10 +527,10 @@ namespace ImageProcessingActivity
             else if(isButtonClicked == 4)
             {
                 Bitmap bmap = (Bitmap)e.Frame.Clone();
-                // Initialize histogram data
+                
                 int[] histogramData = new int[256];
 
-                // Convert to grayscale and calculate histogram using LockBits
+                
                 var rect = new Rectangle(0, 0, bmap.Width, bmap.Height);
                 var frameData = bmap.LockBits(rect, System.Drawing.Imaging.ImageLockMode.ReadOnly, bmap.PixelFormat);
 
@@ -403,10 +548,10 @@ namespace ImageProcessingActivity
                         {
                             int index = y * stride + x * bytesPerPixel;
 
-                            // Convert to grayscale
+                            
                             byte grayValue = (byte)((p[index] + p[index + 1] + p[index + 2]) / 3);
 
-                            // Increment histogram count for the grayscale value
+                            
                             histogramData[grayValue]++;
                         }
                     }
@@ -414,37 +559,37 @@ namespace ImageProcessingActivity
 
                 bmap.UnlockBits(frameData);
 
-                // Create histogram image
+                
                 Bitmap histogramImage = new Bitmap(256, 800);
                 using (Graphics g = Graphics.FromImage(histogramImage))
                 {
-                    g.Clear(Color.White); // Set background to white
+                    g.Clear(Color.White); 
                 }
 
-                // Draw histogram on histogramImage
+                
                 int maxHeight = histogramImage.Height - 1;
                 for (int i = 0; i < histogramData.Length; i++)
                 {
-                    int height = Math.Min(histogramData[i] / 5, maxHeight);  // Scale down for visualization
+                    int height = Math.Min(histogramData[i] / 5, maxHeight);  
                     for (int j = 0; j < height; j++)
                     {
                         histogramImage.SetPixel(i, maxHeight - j, Color.Black);
                     }
                 }
 
-                // Display histogram in pictureBox2
+               
                 pictureBox2.Image = histogramImage;
             }
             else if(isButtonClicked == 5)
             {
                 Bitmap bmap = (Bitmap)e.Frame.Clone();
-                // Create the processed bitmap
+                
                 Bitmap grayscaleFrame = new Bitmap(bmap.Width, bmap.Height, System.Drawing.Imaging.PixelFormat.Format24bppRgb);
 
-                // Define a rectangle for the entire image area
+                
                 var rect = new Rectangle(0, 0, bmap.Width, bmap.Height);
 
-                // Lock bits for both input and output images
+                
                 var loadedData = bmap.LockBits(rect, System.Drawing.Imaging.ImageLockMode.ReadOnly, bmap.PixelFormat);
                 var processedData = grayscaleFrame.LockBits(rect, System.Drawing.Imaging.ImageLockMode.WriteOnly, grayscaleFrame.PixelFormat);
 
@@ -464,17 +609,17 @@ namespace ImageProcessingActivity
                         {
                             int index = y * stride + x * bytesPerPixel;
 
-                            // Get the RGB components
+                            
                             int originalRed = pLoaded[index + 2];
                             int originalGreen = pLoaded[index + 1];
                             int originalBlue = pLoaded[index];
 
-                            // Apply sepia transformation
+                            
                             int sepiaRed = (int)(0.393 * originalRed + 0.769 * originalGreen + 0.189 * originalBlue);
                             int sepiaGreen = (int)(0.349 * originalRed + 0.686 * originalGreen + 0.168 * originalBlue);
                             int sepiaBlue = (int)(0.272 * originalRed + 0.534 * originalGreen + 0.131 * originalBlue);
 
-                            // Ensure values stay within byte range (0–255)
+                            
                             pProcessed[index + 2] = (byte)Math.Min(255, sepiaRed);
                             pProcessed[index + 1] = (byte)Math.Min(255, sepiaGreen);
                             pProcessed[index] = (byte)Math.Min(255, sepiaBlue);
@@ -482,12 +627,106 @@ namespace ImageProcessingActivity
                     }
                 }
 
-                // Unlock bits for both images
+                
                 bmap.UnlockBits(loadedData);
                 grayscaleFrame.UnlockBits(processedData);
 
-                // Set the processed image to PictureBox
+                
                 pictureBox2.Image = grayscaleFrame;
+            }
+            else if(isButtonClicked == 6)
+            {
+                Bitmap bmap = (Bitmap)e.Frame.Clone();
+                Bitmap flippedFrame = new Bitmap(bmap.Width, bmap.Height, System.Drawing.Imaging.PixelFormat.Format24bppRgb);
+
+                var rect = new Rectangle(0, 0, bmap.Width, bmap.Height);
+                var sourceData = bmap.LockBits(rect, System.Drawing.Imaging.ImageLockMode.ReadOnly, bmap.PixelFormat);
+                var flippedData = flippedFrame.LockBits(rect, System.Drawing.Imaging.ImageLockMode.WriteOnly, flippedFrame.PixelFormat);
+
+                int bytesPerPixel = System.Drawing.Image.GetPixelFormatSize(bmap.PixelFormat) / 8;
+                int stride = sourceData.Stride;
+                IntPtr sourcePtr = sourceData.Scan0;
+                IntPtr flippedPtr = flippedData.Scan0;
+
+                unsafe
+                {
+                    byte* sourcePixel = (byte*)(void*)sourcePtr;
+                    byte* flippedPixel = (byte*)(void*)flippedPtr;
+
+                    for (int y = 0; y < bmap.Height; y++)
+                    {
+                        int sourceY = bmap.Height - 1 - y;
+                        byte* sourceRow = sourcePixel + sourceY * stride;
+                        byte* flippedRow = flippedPixel + y * stride;
+
+                        for (int x = 0; x < bmap.Width * bytesPerPixel; x++)
+                        {
+                            flippedRow[x] = sourceRow[x];
+                        }
+                    }
+                }
+
+                bmap.UnlockBits(sourceData);
+                flippedFrame.UnlockBits(flippedData);
+
+                pictureBox2.Image = flippedFrame;
+
+            }
+            else if(isButtonClicked == 7)
+
+            {
+                Bitmap bmap = (Bitmap)e.Frame.Clone();
+                Bitmap flippedFrame = new Bitmap(bmap.Width, bmap.Height, System.Drawing.Imaging.PixelFormat.Format24bppRgb);
+
+                var rect = new Rectangle(0, 0, bmap.Width, bmap.Height);
+                var sourceData = bmap.LockBits(rect, System.Drawing.Imaging.ImageLockMode.ReadOnly, bmap.PixelFormat);
+                var flippedData = flippedFrame.LockBits(rect, System.Drawing.Imaging.ImageLockMode.WriteOnly, flippedFrame.PixelFormat);
+
+                int bytesPerPixel = System.Drawing.Image.GetPixelFormatSize(bmap.PixelFormat) / 8;
+                int stride = sourceData.Stride;
+                IntPtr sourcePtr = sourceData.Scan0;
+                IntPtr flippedPtr = flippedData.Scan0;
+
+                unsafe
+                {
+                    byte* sourcePixel = (byte*)(void*)sourcePtr;
+                    byte* flippedPixel = (byte*)(void*)flippedPtr;
+
+                    for (int y = 0; y < bmap.Height; y++)
+                    {
+                        byte* sourceRow = sourcePixel + y * stride;
+                        byte* flippedRow = flippedPixel + y * stride;
+
+                        for (int x = 0; x < bmap.Width; x++)
+                        {
+                            int sourceX = bmap.Width - 1 - x;
+                            for (int c = 0; c < bytesPerPixel; c++)
+                            {
+                                flippedRow[x * bytesPerPixel + c] = sourceRow[sourceX * bytesPerPixel + c];
+                            }
+                        }
+                    }
+                }
+
+                bmap.UnlockBits(sourceData);
+                flippedFrame.UnlockBits(flippedData);
+
+                pictureBox2.Image = flippedFrame;
+
+            }
+            else if (isButtonClicked == 8)
+            {
+                Bitmap bmap = (Bitmap)e.Frame.Clone();
+                Bitmap scaledimg = null;
+                DIPClass.VidScale(ref bmap, ref scaledimg, 50, 50);
+                pictureBox2.Image = scaledimg;
+            }
+            else if(isButtonClicked == 9)
+            {
+                Bitmap bmap = (Bitmap)e.Frame.Clone();
+                Bitmap scaledimg = null;
+                DIPClass.VidBinaryThreshold(ref bmap, ref scaledimg, 180);
+                pictureBox2.Image = scaledimg;
             }
             else
             {

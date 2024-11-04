@@ -13,6 +13,10 @@
     {
       "AbsoluteMoniker": "D:0:0:{AD988142-25C6-465D-8073-EAB19E3E2B8B}|ImageProcessingActivity\\ImageProcessingActivity.csproj|C:\\Users\\saylo\\OneDrive\\Desktop\\C#VisualStudio\\IntelligentSystems1\\ImageProcessingActivity\\imageprocessingactivity\\dipclass.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{AD988142-25C6-465D-8073-EAB19E3E2B8B}|ImageProcessingActivity\\ImageProcessingActivity.csproj|solutionrelative:imageprocessingactivity\\dipclass.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AD988142-25C6-465D-8073-EAB19E3E2B8B}|ImageProcessingActivity\\ImageProcessingActivity.csproj|c:\\users\\saylo\\onedrive\\desktop\\c#visualstudio\\intelligentsystems1\\imageprocessingactivity\\imageprocessingactivity\\basicdiplib ver 1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AD988142-25C6-465D-8073-EAB19E3E2B8B}|ImageProcessingActivity\\ImageProcessingActivity.csproj|solutionrelative:imageprocessingactivity\\basicdiplib ver 1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -22,8 +26,21 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 2,
           "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "basicDIPlib ver 1.cs",
+              "DocumentMoniker": "C:\\Users\\saylo\\OneDrive\\Desktop\\C#VisualStudio\\IntelligentSystems1\\ImageProcessingActivity\\ImageProcessingActivity\\basicDIPlib ver 1.cs",
+              "RelativeDocumentMoniker": "ImageProcessingActivity\\basicDIPlib ver 1.cs",
+              "ToolTip": "C:\\Users\\saylo\\OneDrive\\Desktop\\C#VisualStudio\\IntelligentSystems1\\ImageProcessingActivity\\ImageProcessingActivity\\basicDIPlib ver 1.cs",
+              "RelativeToolTip": "ImageProcessingActivity\\basicDIPlib ver 1.cs",
+              "ViewState": "AgIAAAIBAAAAAAAAAAAQwB4BAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-04T21:21:48.721Z",
+              "EditorCaption": ""
+            },
             {
               "$type": "Document",
               "DocumentIndex": 2,
@@ -32,7 +49,7 @@
               "RelativeDocumentMoniker": "ImageProcessingActivity\\DIPClass.cs",
               "ToolTip": "C:\\Users\\saylo\\OneDrive\\Desktop\\C#VisualStudio\\IntelligentSystems1\\ImageProcessingActivity\\ImageProcessingActivity\\DIPClass.cs",
               "RelativeToolTip": "ImageProcessingActivity\\DIPClass.cs",
-              "ViewState": "AgIAABEAAAAAAAAAAAAAADgAAAAJAAAAAAAAAA==",
+              "ViewState": "AgIAAO4AAAAAAAAAAAAqwP0AAAA9AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-11-02T06:48:54.525Z",
               "EditorCaption": ""
@@ -43,9 +60,9 @@
               "Title": "Form1.cs",
               "DocumentMoniker": "C:\\Users\\saylo\\OneDrive\\Desktop\\C#VisualStudio\\IntelligentSystems1\\ImageProcessingActivity\\ImageProcessingActivity\\Form1.cs",
               "RelativeDocumentMoniker": "ImageProcessingActivity\\Form1.cs",
-              "ToolTip": "C:\\Users\\saylo\\OneDrive\\Desktop\\C#VisualStudio\\IntelligentSystems1\\ImageProcessingActivity\\ImageProcessingActivity\\Form1.cs",
-              "RelativeToolTip": "ImageProcessingActivity\\Form1.cs",
-              "ViewState": "AgIAANsAAAAAAAAAAAAmwO0AAAAgAAAAAAAAAA==",
+              "ToolTip": "C:\\Users\\saylo\\OneDrive\\Desktop\\C#VisualStudio\\IntelligentSystems1\\ImageProcessingActivity\\ImageProcessingActivity\\Form1.cs*",
+              "RelativeToolTip": "ImageProcessingActivity\\Form1.cs*",
+              "ViewState": "AgIAAMwCAAAAAAAAAAAQwNcCAABIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-11-02T06:22:58.958Z",
               "EditorCaption": ""
@@ -56,8 +73,8 @@
               "Title": "Form1.cs [Design]",
               "DocumentMoniker": "C:\\Users\\saylo\\OneDrive\\Desktop\\C#VisualStudio\\IntelligentSystems1\\ImageProcessingActivity\\ImageProcessingActivity\\Form1.cs",
               "RelativeDocumentMoniker": "ImageProcessingActivity\\Form1.cs",
-              "ToolTip": "C:\\Users\\saylo\\OneDrive\\Desktop\\C#VisualStudio\\IntelligentSystems1\\ImageProcessingActivity\\ImageProcessingActivity\\Form1.cs [Design]",
-              "RelativeToolTip": "ImageProcessingActivity\\Form1.cs [Design]",
+              "ToolTip": "C:\\Users\\saylo\\OneDrive\\Desktop\\C#VisualStudio\\IntelligentSystems1\\ImageProcessingActivity\\ImageProcessingActivity\\Form1.cs [Design]*",
+              "RelativeToolTip": "ImageProcessingActivity\\Form1.cs [Design]*",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-11-02T06:18:10.346Z",
               "EditorCaption": " [Design]"
