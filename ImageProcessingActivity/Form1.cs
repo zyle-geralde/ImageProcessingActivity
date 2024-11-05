@@ -40,6 +40,10 @@ namespace ImageProcessingActivity
             {
                 return;
             }
+            if(loaded == null)
+            {
+                return;
+            }
             processed = new Bitmap(loaded.Width, loaded.Height);
             Color pixel;
             for (int x = 0; x < loaded.Width; x++)
@@ -69,6 +73,10 @@ namespace ImageProcessingActivity
             {
                 return;
             }
+            if (loaded == null)
+            {
+                return;
+            }
             processed = new Bitmap(loaded.Width, loaded.Height);
             Color pixel;
             int ave;
@@ -91,6 +99,10 @@ namespace ImageProcessingActivity
             {
                 return;
             }
+            if (loaded == null)
+            {
+                return;
+            }
             processed = new Bitmap(loaded.Width, loaded.Height);
             Color pixel;
             for (int x = 0; x < loaded.Width; x++)
@@ -109,6 +121,10 @@ namespace ImageProcessingActivity
         private void sepiaToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (pictureBox1.Image == null)
+            {
+                return;
+            }
+            if (loaded == null)
             {
                 return;
             }
@@ -144,6 +160,10 @@ namespace ImageProcessingActivity
         private void histogramToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (pictureBox1.Image == null)
+            {
+                return;
+            }
+            if (loaded == null)
             {
                 return;
             }
@@ -264,6 +284,10 @@ namespace ImageProcessingActivity
             {
                 return;
             }
+            if (loaded == null)
+            {
+                return;
+            }
             processed = new Bitmap(loaded.Width, loaded.Height);
             Color pixel;
             for (int x = 0; x < loaded.Width; x++)
@@ -284,6 +308,10 @@ namespace ImageProcessingActivity
             {
                 return;
             }
+            if (loaded == null)
+            {
+                return;
+            }
             processed = new Bitmap(loaded.Width, loaded.Height);
             Color pixel;
             for (int x = 0; x < loaded.Width; x++)
@@ -301,6 +329,10 @@ namespace ImageProcessingActivity
         private void trackBar1_Scroll(object sender, EventArgs e)
         {
             if(pictureBox1.Image == null)
+            {
+                return;
+            }
+            if (loaded == null)
             {
                 return;
             }
@@ -328,6 +360,10 @@ namespace ImageProcessingActivity
             {
                 return;
             }
+            if (loaded == null)
+            {
+                return;
+            }
             DIPClass.Equalisation(loaded, ref processed, trackBar2.Value);
             pictureBox2.Image = processed;
         }
@@ -335,6 +371,10 @@ namespace ImageProcessingActivity
         private void trackBar3_Scroll(object sender, EventArgs e)
         {
             if (pictureBox1.Image == null)
+            {
+                return;
+            }
+            if (loaded == null)
             {
                 return;
             }
@@ -348,6 +388,10 @@ namespace ImageProcessingActivity
             {
                 return;
             }
+            if (loaded == null)
+            {
+                return;
+            }
             DIPClass.Scale(ref loaded, ref processed, 100, 100);
             pictureBox2.Image = processed;
         }
@@ -355,6 +399,10 @@ namespace ImageProcessingActivity
         private void binaryToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (pictureBox1.Image == null)
+            {
+                return;
+            }
+            if (loaded == null)
             {
                 return;
             }
@@ -726,6 +774,23 @@ namespace ImageProcessingActivity
                 Bitmap bmap = (Bitmap)e.Frame.Clone();
                 Bitmap scaledimg = null;
                 DIPClass.VidBinaryThreshold(ref bmap, ref scaledimg, 180);
+                pictureBox2.Image = scaledimg;
+            }
+            else if(isButtonClicked == 10)
+            {
+                Bitmap bmap = (Bitmap)e.Frame.Clone();
+                Bitmap scaledimg = null;
+                int rotationValue;
+
+                if (trackBar3.InvokeRequired)
+                {
+                    rotationValue = (int)trackBar3.Invoke(new Func<int>(() => trackBar3.Value));
+                }
+                else
+                {
+                    rotationValue = trackBar3.Value;
+                }
+                DIPClass.vidRotate(ref bmap, ref scaledimg, rotationValue);
                 pictureBox2.Image = scaledimg;
             }
             else

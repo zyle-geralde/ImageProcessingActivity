@@ -262,6 +262,65 @@ namespace ImageProcessingActivity
             binaryImage.UnlockBits(binaryData);
         }
 
+        public static void vidRotate(ref Bitmap sourceImage, ref Bitmap rotatedImage, int angleDegrees)
+        {
+            float angleRadians = (float)(Math.PI * angleDegrees / 180.0);
+            int centerX = sourceImage.Width / 2;
+            int centerY = sourceImage.Height / 2;
+            int width = sourceImage.Width;
+            int height = sourceImage.Height;
+
+            rotatedImage = new Bitmap(width, height, System.Drawing.Imaging.PixelFormat.Format24bppRgb);
+
+            float cosAngle = (float)Math.Cos(angleRadians);
+            float sinAngle = (float)Math.Sin(angleRadians);
+
+            var rect = new Rectangle(0, 0, width, height);
+            var sourceData = sourceImage.LockBits(rect, System.Drawing.Imaging.ImageLockMode.ReadOnly, sourceImage.PixelFormat);
+            var rotatedData = rotatedImage.LockBits(rect, System.Drawing.Imaging.ImageLockMode.WriteOnly, rotatedImage.PixelFormat);
+
+            int bytesPerPixel = System.Drawing.Image.GetPixelFormatSize(sourceImage.PixelFormat) / 8;
+            int stride = sourceData.Stride;
+            IntPtr sourcePtr = sourceData.Scan0;
+            IntPtr rotatedPtr = rotatedData.Scan0;
+
+            unsafe
+            {
+                byte* sourcePixel = (byte*)(void*)sourcePtr;
+                byte* rotatedPixel = (byte*)(void*)rotatedPtr;
+
+                for (int newY = 0; newY < height; newY++)
+                {
+                    byte* rotatedRow = rotatedPixel + newY * stride;
+
+                    for (int newX = 0; newX < width; newX++)
+                    {
+                        int offsetX = newX - centerX;
+                        int offsetY = newY - centerY;
+
+                        int originalX = (int)(offsetX * cosAngle + offsetY * sinAngle) + centerX;
+                        int originalY = (int)(-offsetX * sinAngle + offsetY * cosAngle) + centerY;
+
+                        if (originalX >= 0 && originalX < width && originalY >= 0 && originalY < height)
+                        {
+                            byte* sourceRow = sourcePixel + originalY * stride;
+                            byte* sourcePixelData = sourceRow + originalX * bytesPerPixel;
+                            byte* rotatedPixelData = rotatedRow + newX * bytesPerPixel;
+
+                            for (int c = 0; c < bytesPerPixel; c++)
+                            {
+                                rotatedPixelData[c] = sourcePixelData[c];
+                            }
+                        }
+                    }
+                }
+            }
+
+            sourceImage.UnlockBits(sourceData);
+            rotatedImage.UnlockBits(rotatedData);
+        }
+
+
 
 
     }

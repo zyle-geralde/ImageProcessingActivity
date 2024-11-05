@@ -40,6 +40,8 @@
             this.sepiaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.verticalFlipToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.horizontalFlipToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.scaleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.binaryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.onToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.offToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.videoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -48,6 +50,10 @@
             this.colorInversionToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.histogramToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.sepiaToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.verticalFlipToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.horizontalFlipToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.scaleToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.binaryToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
@@ -72,12 +78,6 @@
             this.label3 = new System.Windows.Forms.Label();
             this.trackBar3 = new System.Windows.Forms.TrackBar();
             this.label4 = new System.Windows.Forms.Label();
-            this.scaleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.binaryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.verticalFlipToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.horizontalFlipToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.scaleToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.binaryToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -112,7 +112,7 @@
             this.openToolStripMenuItem,
             this.saveToolStripMenuItem});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
-            this.fileToolStripMenuItem.Size = new System.Drawing.Size(46, 26);
+            this.fileToolStripMenuItem.Size = new System.Drawing.Size(46, 24);
             this.fileToolStripMenuItem.Text = "File";
             // 
             // openToolStripMenuItem
@@ -148,63 +148,77 @@
             // basicCopyToolStripMenuItem
             // 
             this.basicCopyToolStripMenuItem.Name = "basicCopyToolStripMenuItem";
-            this.basicCopyToolStripMenuItem.Size = new System.Drawing.Size(191, 26);
+            this.basicCopyToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.basicCopyToolStripMenuItem.Text = "Basic Copy";
             this.basicCopyToolStripMenuItem.Click += new System.EventHandler(this.basicCopyToolStripMenuItem_Click);
             // 
             // greyScaleToolStripMenuItem
             // 
             this.greyScaleToolStripMenuItem.Name = "greyScaleToolStripMenuItem";
-            this.greyScaleToolStripMenuItem.Size = new System.Drawing.Size(191, 26);
+            this.greyScaleToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.greyScaleToolStripMenuItem.Text = "GreyScale";
             this.greyScaleToolStripMenuItem.Click += new System.EventHandler(this.greyScaleToolStripMenuItem_Click);
             // 
             // colorInversionToolStripMenuItem
             // 
             this.colorInversionToolStripMenuItem.Name = "colorInversionToolStripMenuItem";
-            this.colorInversionToolStripMenuItem.Size = new System.Drawing.Size(191, 26);
+            this.colorInversionToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.colorInversionToolStripMenuItem.Text = "Color Inversion";
             this.colorInversionToolStripMenuItem.Click += new System.EventHandler(this.colorInversionToolStripMenuItem_Click);
             // 
             // histogramToolStripMenuItem
             // 
             this.histogramToolStripMenuItem.Name = "histogramToolStripMenuItem";
-            this.histogramToolStripMenuItem.Size = new System.Drawing.Size(191, 26);
+            this.histogramToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.histogramToolStripMenuItem.Text = "Histogram";
             this.histogramToolStripMenuItem.Click += new System.EventHandler(this.histogramToolStripMenuItem_Click);
             // 
             // sepiaToolStripMenuItem
             // 
             this.sepiaToolStripMenuItem.Name = "sepiaToolStripMenuItem";
-            this.sepiaToolStripMenuItem.Size = new System.Drawing.Size(191, 26);
+            this.sepiaToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.sepiaToolStripMenuItem.Text = "Sepia";
             this.sepiaToolStripMenuItem.Click += new System.EventHandler(this.sepiaToolStripMenuItem_Click);
             // 
             // verticalFlipToolStripMenuItem
             // 
             this.verticalFlipToolStripMenuItem.Name = "verticalFlipToolStripMenuItem";
-            this.verticalFlipToolStripMenuItem.Size = new System.Drawing.Size(191, 26);
+            this.verticalFlipToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.verticalFlipToolStripMenuItem.Text = "Vertical Flip";
             this.verticalFlipToolStripMenuItem.Click += new System.EventHandler(this.verticalFlipToolStripMenuItem_Click);
             // 
             // horizontalFlipToolStripMenuItem
             // 
             this.horizontalFlipToolStripMenuItem.Name = "horizontalFlipToolStripMenuItem";
-            this.horizontalFlipToolStripMenuItem.Size = new System.Drawing.Size(191, 26);
+            this.horizontalFlipToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.horizontalFlipToolStripMenuItem.Text = "Horizontal Flip";
             this.horizontalFlipToolStripMenuItem.Click += new System.EventHandler(this.horizontalFlipToolStripMenuItem_Click);
+            // 
+            // scaleToolStripMenuItem
+            // 
+            this.scaleToolStripMenuItem.Name = "scaleToolStripMenuItem";
+            this.scaleToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.scaleToolStripMenuItem.Text = "Scale";
+            this.scaleToolStripMenuItem.Click += new System.EventHandler(this.scaleToolStripMenuItem_Click);
+            // 
+            // binaryToolStripMenuItem
+            // 
+            this.binaryToolStripMenuItem.Name = "binaryToolStripMenuItem";
+            this.binaryToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.binaryToolStripMenuItem.Text = "Binary";
+            this.binaryToolStripMenuItem.Click += new System.EventHandler(this.binaryToolStripMenuItem_Click);
             // 
             // onToolStripMenuItem
             // 
             this.onToolStripMenuItem.Name = "onToolStripMenuItem";
-            this.onToolStripMenuItem.Size = new System.Drawing.Size(40, 26);
+            this.onToolStripMenuItem.Size = new System.Drawing.Size(40, 24);
             this.onToolStripMenuItem.Text = "on";
             this.onToolStripMenuItem.Click += new System.EventHandler(this.onToolStripMenuItem_Click);
             // 
             // offToolStripMenuItem
             // 
             this.offToolStripMenuItem.Name = "offToolStripMenuItem";
-            this.offToolStripMenuItem.Size = new System.Drawing.Size(42, 26);
+            this.offToolStripMenuItem.Size = new System.Drawing.Size(42, 24);
             this.offToolStripMenuItem.Text = "off";
             this.offToolStripMenuItem.Click += new System.EventHandler(this.offToolStripMenuItem_Click);
             // 
@@ -258,6 +272,34 @@
             this.sepiaToolStripMenuItem1.Size = new System.Drawing.Size(191, 26);
             this.sepiaToolStripMenuItem1.Text = "Sepia";
             this.sepiaToolStripMenuItem1.Click += new System.EventHandler(this.sepiaToolStripMenuItem1_Click);
+            // 
+            // verticalFlipToolStripMenuItem1
+            // 
+            this.verticalFlipToolStripMenuItem1.Name = "verticalFlipToolStripMenuItem1";
+            this.verticalFlipToolStripMenuItem1.Size = new System.Drawing.Size(191, 26);
+            this.verticalFlipToolStripMenuItem1.Text = "Vertical Flip";
+            this.verticalFlipToolStripMenuItem1.Click += new System.EventHandler(this.verticalFlipToolStripMenuItem1_Click);
+            // 
+            // horizontalFlipToolStripMenuItem1
+            // 
+            this.horizontalFlipToolStripMenuItem1.Name = "horizontalFlipToolStripMenuItem1";
+            this.horizontalFlipToolStripMenuItem1.Size = new System.Drawing.Size(191, 26);
+            this.horizontalFlipToolStripMenuItem1.Text = "Horizontal Flip";
+            this.horizontalFlipToolStripMenuItem1.Click += new System.EventHandler(this.horizontalFlipToolStripMenuItem1_Click);
+            // 
+            // scaleToolStripMenuItem1
+            // 
+            this.scaleToolStripMenuItem1.Name = "scaleToolStripMenuItem1";
+            this.scaleToolStripMenuItem1.Size = new System.Drawing.Size(191, 26);
+            this.scaleToolStripMenuItem1.Text = "Scale";
+            this.scaleToolStripMenuItem1.Click += new System.EventHandler(this.scaleToolStripMenuItem1_Click);
+            // 
+            // binaryToolStripMenuItem1
+            // 
+            this.binaryToolStripMenuItem1.Name = "binaryToolStripMenuItem1";
+            this.binaryToolStripMenuItem1.Size = new System.Drawing.Size(191, 26);
+            this.binaryToolStripMenuItem1.Text = "Binary";
+            this.binaryToolStripMenuItem1.Click += new System.EventHandler(this.binaryToolStripMenuItem1_Click);
             // 
             // pictureBox1
             // 
@@ -421,7 +463,7 @@
             // 
             this.trackBar2.Location = new System.Drawing.Point(1022, 75);
             this.trackBar2.Maximum = 100;
-            this.trackBar2.Minimum = -100;
+            this.trackBar2.Minimum = 1;
             this.trackBar2.Name = "trackBar2";
             this.trackBar2.Size = new System.Drawing.Size(223, 56);
             this.trackBar2.TabIndex = 15;
@@ -464,48 +506,6 @@
             this.label4.Size = new System.Drawing.Size(47, 16);
             this.label4.TabIndex = 19;
             this.label4.Text = "Rotate";
-            // 
-            // scaleToolStripMenuItem
-            // 
-            this.scaleToolStripMenuItem.Name = "scaleToolStripMenuItem";
-            this.scaleToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
-            this.scaleToolStripMenuItem.Text = "Scale";
-            this.scaleToolStripMenuItem.Click += new System.EventHandler(this.scaleToolStripMenuItem_Click);
-            // 
-            // binaryToolStripMenuItem
-            // 
-            this.binaryToolStripMenuItem.Name = "binaryToolStripMenuItem";
-            this.binaryToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
-            this.binaryToolStripMenuItem.Text = "Binary";
-            this.binaryToolStripMenuItem.Click += new System.EventHandler(this.binaryToolStripMenuItem_Click);
-            // 
-            // verticalFlipToolStripMenuItem1
-            // 
-            this.verticalFlipToolStripMenuItem1.Name = "verticalFlipToolStripMenuItem1";
-            this.verticalFlipToolStripMenuItem1.Size = new System.Drawing.Size(224, 26);
-            this.verticalFlipToolStripMenuItem1.Text = "Vertical Flip";
-            this.verticalFlipToolStripMenuItem1.Click += new System.EventHandler(this.verticalFlipToolStripMenuItem1_Click);
-            // 
-            // horizontalFlipToolStripMenuItem1
-            // 
-            this.horizontalFlipToolStripMenuItem1.Name = "horizontalFlipToolStripMenuItem1";
-            this.horizontalFlipToolStripMenuItem1.Size = new System.Drawing.Size(224, 26);
-            this.horizontalFlipToolStripMenuItem1.Text = "Horizontal Flip";
-            this.horizontalFlipToolStripMenuItem1.Click += new System.EventHandler(this.horizontalFlipToolStripMenuItem1_Click);
-            // 
-            // scaleToolStripMenuItem1
-            // 
-            this.scaleToolStripMenuItem1.Name = "scaleToolStripMenuItem1";
-            this.scaleToolStripMenuItem1.Size = new System.Drawing.Size(224, 26);
-            this.scaleToolStripMenuItem1.Text = "Scale";
-            this.scaleToolStripMenuItem1.Click += new System.EventHandler(this.scaleToolStripMenuItem1_Click);
-            // 
-            // binaryToolStripMenuItem1
-            // 
-            this.binaryToolStripMenuItem1.Name = "binaryToolStripMenuItem1";
-            this.binaryToolStripMenuItem1.Size = new System.Drawing.Size(224, 26);
-            this.binaryToolStripMenuItem1.Text = "Binary";
-            this.binaryToolStripMenuItem1.Click += new System.EventHandler(this.binaryToolStripMenuItem1_Click);
             // 
             // Form1
             // 
