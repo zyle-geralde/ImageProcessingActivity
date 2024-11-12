@@ -1,7 +1,9 @@
-﻿using System;
+﻿using ImageProcess2;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
+using System.Drawing.Imaging;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,6 +11,18 @@ using System.Windows.Forms;
 
 namespace ImageProcessingActivity
 {
+    public class ConvMatrix
+    {
+        public int TopLeft = 0, TopMid = 0, TopRight = 0;
+        public int MidLeft = 0, Pixel = 1, MidRight = 0;
+        public int BottomLeft = 0, BottomMid = 0, BottomRight = 0;
+        public int Factor = 1;
+        public int Offset = 0;
+        public void SetAll(int nVal)
+        {
+            TopLeft = TopMid = TopRight = MidLeft = Pixel = MidRight = BottomLeft = BottomMid = BottomRight = nVal;
+        }
+    }
     static class DIPClass
     {
         public static void Histogram(ref Bitmap load, ref Bitmap proc)
@@ -323,5 +337,187 @@ namespace ImageProcessingActivity
 
 
 
+        /*--------------------CONVOLUTIONAL SECTION--------------------------*/
+
+        public static Bitmap Conv3x3(Bitmap b, ConvMatrix m)
+        {
+            // Avoid divide by zero errors
+            if (0 == m.Factor || b == null) return null;
+
+            Bitmap bSrc = (Bitmap)b.Clone();
+            Bitmap r = new Bitmap(bSrc.Width, bSrc.Height);
+
+            // GDI+ still lies to us - the return format is BGR, NOT RGB.
+            BitmapData bmData = r.LockBits(new Rectangle(0, 0, r.Width, r.Height), ImageLockMode.ReadWrite, PixelFormat.Format24bppRgb);
+            BitmapData bmSrc = bSrc.LockBits(new Rectangle(0, 0, bSrc.Width, bSrc.Height), ImageLockMode.ReadWrite, PixelFormat.Format24bppRgb);
+
+            int stride = bmData.Stride;
+            int stride2 = stride * 2;
+            System.IntPtr Scan0 = bmData.Scan0;
+            System.IntPtr SrcScan0 = bmSrc.Scan0;
+
+            unsafe
+            {
+                byte* p = (byte*)(void*)Scan0;
+                byte* pSrc = (byte*)(void*)SrcScan0;
+
+                int nOffset = stride - b.Width * 3;
+                int nWidth = b.Width - 2;
+                int nHeight = b.Height - 2;
+
+                int nPixel;
+
+                for (int y = 0; y < nHeight; ++y)
+                {
+                    for (int x = 0; x < nWidth; ++x)
+                    {
+                        nPixel = ((((pSrc[2] * m.TopLeft) + (pSrc[5] * m.TopMid) + (pSrc[8] * m.TopRight) +
+                            (pSrc[2 + stride] * m.MidLeft) + (pSrc[5 + stride] * m.Pixel) + (pSrc[8 + stride] * m.MidRight) +
+                            (pSrc[2 + stride2] * m.BottomLeft) + (pSrc[5 + stride2] * m.BottomMid) + (pSrc[8 + stride2] * m.BottomRight)) / m.Factor) + m.Offset);
+
+                        if (nPixel < 0) nPixel = 0;
+                        if (nPixel > 255) nPixel = 255;
+
+                        p[5 + stride] = (byte)nPixel;
+
+                        nPixel = ((((pSrc[1] * m.TopLeft) + (pSrc[4] * m.TopMid) + (pSrc[7] * m.TopRight) +
+                            (pSrc[1 + stride] * m.MidLeft) + (pSrc[4 + stride] * m.Pixel) + (pSrc[7 + stride] * m.MidRight) +
+                            (pSrc[1 + stride2] * m.BottomLeft) + (pSrc[4 + stride2] * m.BottomMid) + (pSrc[7 + stride2] * m.BottomRight)) / m.Factor) + m.Offset);
+
+                        if (nPixel < 0) nPixel = 0;
+                        if (nPixel > 255) nPixel = 255;
+
+                        p[4 + stride] = (byte)nPixel;
+
+                        nPixel = ((((pSrc[0] * m.TopLeft) + (pSrc[3] * m.TopMid) + (pSrc[6] * m.TopRight) +
+                            (pSrc[0 + stride] * m.MidLeft) + (pSrc[3 + stride] * m.Pixel) + (pSrc[6 + stride] * m.MidRight) +
+                            (pSrc[0 + stride2] * m.BottomLeft) + (pSrc[3 + stride2] * m.BottomMid) + (pSrc[6 + stride2] * m.BottomRight)) / m.Factor) + m.Offset);
+
+                        if (nPixel < 0) nPixel = 0;
+                        if (nPixel > 255) nPixel = 255;
+
+                        p[3 + stride] = (byte)nPixel;
+
+                        p += 3;
+                        pSrc += 3;
+                    }
+                    p += nOffset;
+                    pSrc += nOffset;
+                }
+            }
+
+            r.UnlockBits(bmData);
+            bSrc.UnlockBits(bmSrc);
+
+            return r;
+        }
+
+        public static void Smooth(Bitmap b,ref Bitmap r, int nWeight /* default to 1 */)
+        {
+            ConvMatrix m = new ConvMatrix();
+            m.SetAll(1);
+            m.Pixel = nWeight;
+            m.Factor = nWeight + 8;
+            r = Conv3x3(b, m);
+        }
+
+
+        public static void Sharpen(Bitmap b, ref Bitmap r,int nWeight /* default to 11*/ )
+        {
+            ConvMatrix m = new ConvMatrix();
+            m.SetAll(0);
+            m.Pixel = nWeight;
+            m.TopMid = m.MidLeft = m.MidRight = m.BottomMid = -2;
+            m.Factor = nWeight - 8;
+
+            r = Conv3x3(b, m);
+        }
+
+        public static void GaussianBlur(Bitmap b, ref Bitmap r, int nWeight /* default to 4*/)
+        {
+            ConvMatrix m = new ConvMatrix();
+            m.SetAll(1);
+            m.Pixel = nWeight;
+            m.TopMid = m.MidLeft = m.MidRight = m.BottomMid = 2;
+            m.Factor = nWeight + 12;
+
+            r = Conv3x3(b, m);
+        }
+
+        public static void MeanRemoval(Bitmap b, ref Bitmap r,int nWeight /* default to 9*/ )
+        {
+            ConvMatrix m = new ConvMatrix();
+            m.SetAll(-1);
+            m.Pixel = nWeight;
+            m.Factor = nWeight - 8;
+
+            r = Conv3x3(b, m);
+        }
+
+        public static void Emboss_Laplacian(Bitmap b,ref Bitmap r)
+        {
+            ConvMatrix m = new ConvMatrix();
+            m.SetAll(-1);
+            m.MidLeft = m.TopMid = m.BottomMid  = m.MidRight = 0;
+            m.Pixel = 4;
+            m.Offset = 127;
+
+            r = Conv3x3(b, m);
+        }
+
+        public static void Emboss_AllDirection(Bitmap b, ref Bitmap r)
+        {
+            ConvMatrix m = new ConvMatrix();
+            m.SetAll(-1);
+            m.Pixel = 8;
+            m.Offset = 127;
+
+            r= Conv3x3(b, m);
+        }
+
+        public static void EmbossLossy(Bitmap b, ref Bitmap r)
+        {
+            ConvMatrix m = new ConvMatrix();
+            m.SetAll(-2);
+            m.TopLeft = m.BottomMid = m.TopRight = 1;
+            m.Pixel = 4;
+            m.Offset = 127;
+
+            r = Conv3x3(b, m);
+        }
+
+        public static void EmbossHorzVert(Bitmap b, ref Bitmap r)
+        {
+            ConvMatrix m = new ConvMatrix();
+            m.SetAll(0);
+            m.MidLeft = m.TopMid = m.BottomMid = m.MidRight = -1;
+            m.Pixel = 4;
+            m.Offset = 127;
+
+            r = Conv3x3(b, m);
+        }
+
+        public static void EmbossVerticalOnly(Bitmap b, ref Bitmap r)
+        {
+            ConvMatrix m = new ConvMatrix();
+            m.SetAll(0);
+            m.TopMid = -1;
+            m.BottomMid = 1;
+            m.Pixel = 0;
+            m.Offset = 127;
+
+            r = Conv3x3(b, m);
+        }
+
+        public static void EmbossHorizontalOnly(Bitmap b, ref Bitmap r)
+        {
+            ConvMatrix m = new ConvMatrix();
+            m.SetAll(0);
+            m.MidLeft = m.MidRight = -1;
+            m.Pixel = 2;
+            m.Offset = 127;
+
+            r = Conv3x3(b, m);
+        }
     }
 }

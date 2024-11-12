@@ -431,6 +431,196 @@ namespace ImageProcessingActivity
             isButtonClicked = 9;
         }
 
+        private void smoothToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (pictureBox1.Image == null)
+            {
+                return;
+            }
+            if (loaded == null)
+            {
+                return;
+            }
+            DIPClass.Smooth(loaded, ref processed,1);
+            pictureBox2.Image = processed;
+        }
+
+        private void gaussianBlurToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (pictureBox1.Image == null)
+            {
+                return;
+            }
+            if (loaded == null)
+            {
+                return;
+            }
+            DIPClass.GaussianBlur(loaded, ref processed,4);
+            pictureBox2.Image = processed;
+        }
+
+        private void sharpenToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (pictureBox1.Image == null)
+            {
+                return;
+            }
+            if (loaded == null)
+            {
+                return;
+            }
+            DIPClass.Sharpen(loaded, ref processed, 11);
+            pictureBox2.Image = processed;
+        }
+
+        private void meanRemovalToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (pictureBox1.Image == null)
+            {
+                return;
+            }
+            if (loaded == null)
+            {
+                return;
+            }
+            DIPClass.MeanRemoval(loaded, ref processed, 9);
+            pictureBox2.Image = processed;
+        }
+
+        private void embossLaplacianToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (pictureBox1.Image == null)
+            {
+                return;
+            }
+            if (loaded == null)
+            {
+                return;
+            }
+            DIPClass.Emboss_Laplacian(loaded, ref processed);
+            pictureBox2.Image = processed;
+        }
+
+        private void embossHorzVertToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (pictureBox1.Image == null)
+            {
+                return;
+            }
+            if (loaded == null)
+            {
+                return;
+            }
+            DIPClass.EmbossHorzVert(loaded, ref processed);
+            pictureBox2.Image = processed;
+        }
+
+        private void embossAllDirectionToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (pictureBox1.Image == null)
+            {
+                return;
+            }
+            if (loaded == null)
+            {
+                return;
+            }
+            DIPClass.Emboss_AllDirection(loaded, ref processed);
+            pictureBox2.Image = processed;
+        }
+
+        private void embossLossyToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (pictureBox1.Image == null)
+            {
+                return;
+            }
+            if (loaded == null)
+            {
+                return;
+            }
+            DIPClass.EmbossLossy(loaded, ref processed);
+            pictureBox2.Image = processed;
+        }
+
+        private void embossHorizontalOnlyToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (pictureBox1.Image == null)
+            {
+                return;
+            }
+            if (loaded == null)
+            {
+                return;
+            }
+            DIPClass.EmbossHorizontalOnly(loaded, ref processed);
+            pictureBox2.Image = processed;
+        }
+
+        private void embossVerticalOnlyToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (pictureBox1.Image == null)
+            {
+                return;
+            }
+            if (loaded == null)
+            {
+                return;
+            }
+            DIPClass.EmbossVerticalOnly(loaded, ref processed);
+            pictureBox2.Image = processed;
+        }
+
+        private void smoothToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            isButtonClicked = 11;
+        }
+
+        private void gaussianBlurToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            isButtonClicked = 12;
+        }
+
+        private void sharpenToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            isButtonClicked = 13;
+        }
+
+        private void meanRemovalToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            isButtonClicked = 14;
+        }
+
+        private void embossLaplacianToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            isButtonClicked = 15;
+        }
+
+        private void embossHorzVertToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            isButtonClicked = 16;
+        }
+
+        private void embossAllDirectionToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            isButtonClicked = 17;
+        }
+
+        private void embossLossyToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            isButtonClicked = 18;
+        }
+
+        private void embossHorizontalOnlyToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            isButtonClicked = 19;
+        }
+
+        private void embossVerticalOnlyToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            isButtonClicked = 20;
+        }
+
         private void FinalFrame_NewFrame(object sender, NewFrameEventArgs e)
         {
             
@@ -791,6 +981,86 @@ namespace ImageProcessingActivity
                     rotationValue = trackBar3.Value;
                 }
                 DIPClass.vidRotate(ref bmap, ref scaledimg, rotationValue);
+                pictureBox2.Image = scaledimg;
+            }
+            else if(isButtonClicked == 11)
+            {
+                Bitmap bmap = (Bitmap)e.Frame.Clone();
+                Bitmap scaledimg = null;
+
+                DIPClass.Smooth(bmap, ref scaledimg,1);
+                pictureBox2.Image = scaledimg;
+            }
+            else if (isButtonClicked == 12)
+            {
+                Bitmap bmap = (Bitmap)e.Frame.Clone();
+                Bitmap scaledimg = null;
+
+                DIPClass.GaussianBlur(bmap, ref scaledimg, 4);
+                pictureBox2.Image = scaledimg;
+            }
+            else if (isButtonClicked == 13)
+            {
+                Bitmap bmap = (Bitmap)e.Frame.Clone();
+                Bitmap scaledimg = null;
+
+                DIPClass.Sharpen(bmap, ref scaledimg, 11);
+                pictureBox2.Image = scaledimg;
+            }
+            else if (isButtonClicked == 14)
+            {
+                Bitmap bmap = (Bitmap)e.Frame.Clone();
+                Bitmap scaledimg = null;
+
+                DIPClass.MeanRemoval(bmap, ref scaledimg, 9);
+                pictureBox2.Image = scaledimg;
+            }
+            else if (isButtonClicked == 15)
+            {
+                Bitmap bmap = (Bitmap)e.Frame.Clone();
+                Bitmap scaledimg = null;
+
+                DIPClass.Emboss_Laplacian(bmap, ref scaledimg);
+                pictureBox2.Image = scaledimg;
+            }
+            else if (isButtonClicked == 16)
+            {
+                Bitmap bmap = (Bitmap)e.Frame.Clone();
+                Bitmap scaledimg = null;
+
+                DIPClass.EmbossHorzVert(bmap, ref scaledimg);
+                pictureBox2.Image = scaledimg;
+            }
+            else if (isButtonClicked == 17)
+            {
+                Bitmap bmap = (Bitmap)e.Frame.Clone();
+                Bitmap scaledimg = null;
+
+                DIPClass.Emboss_AllDirection(bmap, ref scaledimg);
+                pictureBox2.Image = scaledimg;
+            }
+            else if (isButtonClicked == 18)
+            {
+                Bitmap bmap = (Bitmap)e.Frame.Clone();
+                Bitmap scaledimg = null;
+
+                DIPClass.EmbossLossy(bmap, ref scaledimg);
+                pictureBox2.Image = scaledimg;
+            }
+            else if (isButtonClicked == 19)
+            {
+                Bitmap bmap = (Bitmap)e.Frame.Clone();
+                Bitmap scaledimg = null;
+
+                DIPClass.EmbossHorizontalOnly(bmap, ref scaledimg);
+                pictureBox2.Image = scaledimg;
+            }
+            else if (isButtonClicked == 20)
+            {
+                Bitmap bmap = (Bitmap)e.Frame.Clone();
+                Bitmap scaledimg = null;
+
+                DIPClass.EmbossVerticalOnly(bmap, ref scaledimg);
                 pictureBox2.Image = scaledimg;
             }
             else
