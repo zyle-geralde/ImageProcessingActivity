@@ -14,6 +14,7 @@ using System.Diagnostics.Tracing;
 using System.Collections.Concurrent;
 using static System.Net.Mime.MediaTypeNames;
 using System.Diagnostics;
+using ImageProcess2;
 
 namespace ImageProcessingActivity
 {
@@ -621,6 +622,186 @@ namespace ImageProcessingActivity
             isButtonClicked = 20;
         }
 
+        private void edgeDetectQuickToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (pictureBox1.Image == null)
+            {
+                return;
+            }
+            if (loaded == null)
+            {
+                return;
+            }
+            Bitmap m = (Bitmap)pictureBox1.Image.Clone();
+            BitmapFilter.EdgeDetectQuick(m);
+            pictureBox2.Image = m;
+        }
+
+        private void prewittToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (pictureBox1.Image == null)
+            {
+                return;
+            }
+            if (loaded == null)
+            {
+                return;
+            }
+            Bitmap m = (Bitmap)pictureBox1.Image.Clone();
+            BitmapFilter.EdgeDetectConvolution(m,2,75);
+            pictureBox2.Image = m;
+        }
+
+        private void sobelToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (pictureBox1.Image == null)
+            {
+                return;
+            }
+            if (loaded == null)
+            {
+                return;
+            }
+            Bitmap m = (Bitmap)pictureBox1.Image.Clone();
+            BitmapFilter.EdgeDetectConvolution(m, 3, 75);
+            pictureBox2.Image = m;
+        }
+
+        private void kirshToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (pictureBox1.Image == null)
+            {
+                return;
+            }
+            if (loaded == null)
+            {
+                return;
+            }
+            Bitmap m = (Bitmap)pictureBox1.Image.Clone();
+            BitmapFilter.EdgeDetectConvolution(m, 1, 75);
+            pictureBox2.Image = m;
+        }
+
+        private void horizontalToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (pictureBox1.Image == null)
+            {
+                return;
+            }
+            if (loaded == null)
+            {
+                return;
+            }
+            Bitmap m = (Bitmap)pictureBox1.Image.Clone();
+            BitmapFilter.EdgeDetectHorizontal(m);
+            pictureBox2.Image = m;
+        }
+
+        private void verticalToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (pictureBox1.Image == null)
+            {
+                return;
+            }
+            if (loaded == null)
+            {
+                return;
+            }
+            Bitmap m = (Bitmap)pictureBox1.Image.Clone();
+            BitmapFilter.EdgeDetectVertical(m);
+            pictureBox2.Image = m;
+        }
+
+        private void homogenityToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (pictureBox1.Image == null)
+            {
+                return;
+            }
+            if (loaded == null)
+            {
+                return;
+            }
+            Bitmap m = (Bitmap)pictureBox1.Image.Clone();
+            BitmapFilter.EdgeDetectHomogenity(m,75);
+            pictureBox2.Image = m;
+        }
+
+        private void differenceToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (pictureBox1.Image == null)
+            {
+                return;
+            }
+            if (loaded == null)
+            {
+                return;
+            }
+            Bitmap m = (Bitmap)pictureBox1.Image.Clone();
+            BitmapFilter.EdgeDetectDifference(m,75);
+            pictureBox2.Image = m;
+        }
+
+        private void edgeEnhanceToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (pictureBox1.Image == null)
+            {
+                return;
+            }
+            if (loaded == null)
+            {
+                return;
+            }
+            Bitmap m = (Bitmap)pictureBox1.Image.Clone();
+            BitmapFilter.EdgeEnhance(m, 75);
+            pictureBox2.Image = m;
+        }
+
+        private void quickToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            isButtonClicked = 21;
+        }
+
+        private void sobelToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            isButtonClicked = 22;
+        }
+
+        private void prewittToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            isButtonClicked = 23;
+        }
+
+        private void kirshToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            isButtonClicked = 24;
+        }
+
+        private void horizontalToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            isButtonClicked = 25;
+        }
+
+        private void verticalToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            isButtonClicked = 26;
+        }
+
+        private void homogentiyToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            isButtonClicked = 27;
+        }
+
+        private void differenceToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            isButtonClicked = 28;
+        }
+
+        private void edgeEnhanceToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            isButtonClicked = 29;
+        }
+
         private void FinalFrame_NewFrame(object sender, NewFrameEventArgs e)
         {
             
@@ -1063,6 +1244,71 @@ namespace ImageProcessingActivity
                 DIPClass.EmbossVerticalOnly(bmap, ref scaledimg);
                 pictureBox2.Image = scaledimg;
             }
+            else if (isButtonClicked == 21)
+            {
+                Bitmap bmap = (Bitmap)e.Frame.Clone();
+                BitmapFilter.EdgeDetectQuick(bmap);
+                pictureBox2.Image = bmap;
+            }
+            else if (isButtonClicked == 22)
+            {
+                //Sobel
+                Bitmap bmap = (Bitmap)e.Frame.Clone();
+                BitmapFilter.EdgeDetectConvolution(bmap, 3, 75);
+                pictureBox2.Image = bmap;
+            }
+            else if (isButtonClicked == 23)
+            {
+                //Prewitt
+
+                Bitmap bmap = (Bitmap)e.Frame.Clone();
+                BitmapFilter.EdgeDetectConvolution(bmap, 2, 75);
+                pictureBox2.Image = bmap;
+            }
+            else if (isButtonClicked == 24)
+            {
+                //Kirsh
+
+                Bitmap bmap = (Bitmap)e.Frame.Clone();
+                BitmapFilter.EdgeDetectConvolution(bmap, 1, 75);
+                pictureBox2.Image = bmap;
+            }
+            else if (isButtonClicked == 25)
+            {
+
+                Bitmap bmap = (Bitmap)e.Frame.Clone();
+                BitmapFilter.EdgeDetectHorizontal(bmap);
+                pictureBox2.Image = bmap;
+            }
+            else if (isButtonClicked == 26)
+            {
+
+                Bitmap bmap = (Bitmap)e.Frame.Clone();
+                BitmapFilter.EdgeDetectVertical(bmap);
+                pictureBox2.Image = bmap;
+            }
+            else if (isButtonClicked == 27)
+            {
+
+                Bitmap bmap = (Bitmap)e.Frame.Clone();
+                BitmapFilter.EdgeDetectHomogenity(bmap, 75);
+                pictureBox2.Image = bmap;
+            }
+            else if (isButtonClicked == 28)
+            {
+
+                Bitmap bmap = (Bitmap)e.Frame.Clone();
+                BitmapFilter.EdgeDetectDifference(bmap, 75);
+                pictureBox2.Image = bmap;
+            }
+            else if (isButtonClicked == 29)
+            {
+
+                Bitmap bmap = (Bitmap)e.Frame.Clone();
+                BitmapFilter.EdgeEnhance(bmap,75);
+                pictureBox2.Image = bmap;
+            }
+
             else
             {
                 pictureBox2.Image = null;
